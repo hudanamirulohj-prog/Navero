@@ -2,30 +2,34 @@
    NAVERO — Stylesheet
    ========================================================= */
 
-/* ---------- 1. VARIABLES ---------- */
+/* ---------- 1. VARIABLES — TEMA EMAS & NAVY ---------- */
 :root {
-  --brand:        #5B4BFF;
-  --brand-dark:   #4436E0;
-  --brand-soft:   rgba(91, 75, 255, .10);
-  --brand-2:      #8B5CF6;
-  --accent:       #FF6B35;
+  /* Warna brand utama (gold) */
+  --brand:        #D4AF37;   /* Gold utama */
+  --brand-dark:   #B8941F;   /* Gold tua */
+  --brand-soft:   rgba(212, 175, 55, .12);
+  --brand-2:      #F4D03F;   /* Gold terang untuk gradient */
+  --accent:       #F4D03F;   /* Highlight */
   --success:      #10B981;
   --danger:       #EF4444;
 
-  --bg:           #F5F6FA;
+  /* Background (light mode) */
+  --bg:           #F7F4EC;   /* Krem hangat */
   --bg-alt:       #FFFFFF;
   --surface:      #FFFFFF;
-  --surface-2:    #F1F2F8;
-  --text:         #0E1220;
-  --text-soft:    #3A4256;
-  --muted:        #71778C;
-  --border:       #E6E8F0;
+  --surface-2:    #F0EBD9;   /* Krem muda */
+  --text:         #0A1628;   /* Navy gelap */
+  --text-soft:    #2C3E50;
+  --muted:        #6B7280;
+  --border:       #E5DDB8;   /* Border gold muda */
 
-  --shadow-xs:    0 1px 2px rgba(16,24,40,.05);
-  --shadow-sm:    0 2px 8px rgba(16,24,40,.06);
-  --shadow:       0 8px 24px -6px rgba(16,24,40,.12);
-  --shadow-lg:    0 24px 48px -16px rgba(16,24,40,.24);
-  --shadow-brand: 0 12px 28px -10px rgba(91,75,255,.55);
+  /* Shadow dengan nuansa gold */
+  --shadow-xs:    0 1px 2px rgba(10, 22, 40, .06);
+  --shadow-sm:    0 2px 8px rgba(10, 22, 40, .08);
+  --shadow:       0 8px 24px -6px rgba(10, 22, 40, .15);
+  --shadow-lg:    0 24px 48px -16px rgba(10, 22, 40, .28);
+  --shadow-brand: 0 12px 28px -10px rgba(212, 175, 55, .55);
+  --shadow-gold:  0 12px 32px -8px rgba(212, 175, 55, .45);
 
   --radius-xs: 8px;
   --radius-sm: 12px;
@@ -40,25 +44,28 @@
   --t: .28s var(--ease);
 }
 
+/* ---------- DARK MODE — NAVY + GOLD ---------- */
 [data-theme="dark"] {
-  --brand:        #7C6DFF;
-  --brand-dark:   #6A5AF0;
-  --brand-soft:   rgba(124, 109, 255, .16);
+  --brand:        #F4D03F;   /* Gold lebih terang di dark mode */
+  --brand-dark:   #D4AF37;
+  --brand-soft:   rgba(244, 208, 63, .15);
+  --brand-2:      #D4AF37;
 
-  --bg:           #080B13;
-  --bg-alt:       #0D111C;
-  --surface:      #121826;
-  --surface-2:    #1A2133;
-  --text:         #EDEFF7;
-  --text-soft:    #C3C9DA;
-  --muted:        #8A93AB;
-  --border:       #222B40;
+  --bg:           #0A1628;   /* Navy gelap — sama dengan logo */
+  --bg-alt:       #0F1E33;
+  --surface:      #132742;   /* Navy medium */
+  --surface-2:    #1A2B4A;
+  --text:         #F8F9FA;   /* Hampir putih */
+  --text-soft:    #D1D5DB;
+  --muted:        #94A3B8;
+  --border:       #1E3A5F;   /* Border navy terang */
 
   --shadow-xs:    0 1px 2px rgba(0,0,0,.4);
   --shadow-sm:    0 2px 8px rgba(0,0,0,.35);
   --shadow:       0 8px 24px -6px rgba(0,0,0,.55);
-  --shadow-lg:    0 24px 48px -16px rgba(0,0,0,.7);
-  --shadow-brand: 0 12px 28px -10px rgba(124,109,255,.5);
+  --shadow-lg:    0 24px 48px -16px rgba(0,0,0,.75);
+  --shadow-brand: 0 12px 28px -10px rgba(244, 208, 63, .5);
+  --shadow-gold:  0 12px 32px -8px rgba(244, 208, 63, .4);
 }
 
 /* ---------- 2. RESET ---------- */
