@@ -1226,3 +1226,282 @@ svg { width: 20px; height: 20px; flex-shrink: 0; }
   }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* =========================================================
+   TEMA EMAS & NAVY — CUSTOM LOGO & BANNER
+   ========================================================= */
+
+/* ---------- LOGO GAMBAR ---------- */
+.logo--img { gap: 0; }
+.logo__img {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  transition: var(--t);
+  filter: drop-shadow(0 2px 6px rgba(212, 175, 55, .25));
+}
+.logo--img:hover .logo__img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 12px rgba(212, 175, 55, .5));
+}
+@media (max-width: 640px) {
+  .logo__img { height: 38px; }
+}
+
+/* ---------- HERO BANNER FULL WIDTH ---------- */
+.hero--banner {
+  position: relative;
+  padding: 100px 0 120px;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(10, 22, 40, .85) 0%, rgba(10, 22, 40, .55) 50%, rgba(10, 22, 40, .85) 100%),
+    url('assets/banner.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+}
+
+/* Overlay emas tipis di atas */
+.hero--banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, .18), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(244, 208, 63, .12), transparent 50%);
+  pointer-events: none;
+}
+
+/* Garis diagonal emas di pojok (seperti di banner kamu) */
+.hero--banner::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, transparent 40%, rgba(212, 175, 55, .25) 40%, rgba(212, 175, 55, .05) 60%, transparent 60%);
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+
+.hero--banner .hero__inner {
+  position: relative;
+  z-index: 2;
+  grid-template-columns: 1fr;
+  max-width: 780px;
+}
+
+.hero--banner .hero__title {
+  color: #FFFFFF;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, .5);
+  font-size: clamp(32px, 4.8vw, 54px);
+}
+
+.hero--banner .hero__title .grad {
+  background: linear-gradient(120deg, #F4D03F 0%, #D4AF37 50%, #F4D03F 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(244, 208, 63, .3));
+}
+
+.hero--banner .hero__desc {
+  color: rgba(255, 255, 255, .9);
+  font-size: 16.5px;
+}
+
+.hero--banner .hero__pill {
+  background: rgba(10, 22, 40, .7);
+  backdrop-filter: blur(12px);
+  border-color: rgba(212, 175, 55, .4);
+  color: #F4D03F;
+}
+
+.hero--banner .hero__pill .dot {
+  background: #F4D03F;
+  box-shadow: 0 0 0 3px rgba(244, 208, 63, .25);
+}
+
+.hero--banner .stat strong {
+  color: #F4D03F;
+  background: linear-gradient(135deg, #F4D03F, #D4AF37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero--banner .stat span {
+  color: rgba(255, 255, 255, .7);
+}
+
+/* Sembunyikan visual lama kalau masih ada */
+.hero--banner .hero__visual { display: none; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero--banner {
+    padding: 70px 0 90px;
+    min-height: 460px;
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero--banner {
+    padding: 50px 0 70px;
+    min-height: 400px;
+    text-align: center;
+  }
+  .hero--banner .hero__inner { justify-content: center; }
+  .hero--banner .hero__cta { justify-content: center; }
+  .hero--banner .hero__stats { justify-content: center; }
+}
+
+/* ---------- TOMBOL PRIMARY — GOLD GRADIENT ---------- */
+.btn--primary {
+  background: linear-gradient(135deg, #F4D03F 0%, #D4AF37 50%, #B8941F 100%);
+  color: #0A1628;
+  box-shadow: var(--shadow-gold);
+  font-weight: 800;
+}
+.btn--primary:hover {
+  background: linear-gradient(135deg, #F4D03F 0%, #D4AF37 100%);
+  box-shadow: 0 16px 40px -10px rgba(244, 208, 63, .6);
+  transform: translateY(-2px);
+}
+
+/* ---------- LOGO MARK DEFAULT (kalau pakai huruf N) ---------- */
+.logo__mark {
+  background: linear-gradient(135deg, #F4D03F, #D4AF37);
+  color: #0A1628;
+  font-weight: 800;
+  box-shadow: var(--shadow-gold);
+}
+.logo__text {
+  background: linear-gradient(135deg, #FFFFFF, #D4AF37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .logo__text {
+  background: linear-gradient(135deg, #0A1628, #B8941F);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- BADGE — warna emas untuk FAVORIT ---------- */
+.badge--favorit {
+  background: linear-gradient(135deg, #F4D03F, #B8941F);
+  color: #0A1628;
+}
+.badge--terlaris {
+  background: linear-gradient(135deg, #F4D03F, #D4AF37);
+  color: #0A1628;
+}
+
+/* ---------- PROFILE CARD AVATAR — nuansa emas ---------- */
+.profile-card::before {
+  background: linear-gradient(120deg, #D4AF37, #F4D03F, #B8941F);
+  opacity: .15;
+}
+.profile-card__avatar {
+  background: linear-gradient(135deg, #F4D03F, #D4AF37);
+  box-shadow: var(--shadow-gold);
+}
+.profile-card__initial {
+  color: #0A1628;
+  font-weight: 800;
+}
+.profile-card__tagline {
+  color: #B8941F;
+}
+[data-theme="dark"] .profile-card__tagline {
+  color: #F4D03F;
+}
+
+/* ---------- FOOTER — nuansa navy dengan aksen emas ---------- */
+[data-theme="dark"] .footer {
+  background: #061020;
+  border-top-color: rgba(212, 175, 55, .25);
+}
+.footer__col a:hover { color: #D4AF37; }
+
+/* ---------- SECTION EYEBROW — gold ---------- */
+.section__eyebrow {
+  color: #B8941F;
+  letter-spacing: .14em;
+}
+[data-theme="dark"] .section__eyebrow {
+  color: #F4D03F;
+}
+
+/* ---------- CHIP AKTIF — gold ---------- */
+.chip.is-active {
+  background: linear-gradient(135deg, #F4D03F, #D4AF37);
+  color: #0A1628;
+  box-shadow: var(--shadow-gold);
+}
+
+/* ---------- TO-TOP — gold ---------- */
+.to-top {
+  background: linear-gradient(135deg, #F4D03F, #D4AF37);
+  color: #0A1628;
+  box-shadow: var(--shadow-gold);
+}
+
+/* ---------- LINK MORE — gold ---------- */
+.link-more {
+  color: #B8941F;
+}
+.link-more:hover {
+  color: #D4AF37;
+}
+[data-theme="dark"] .link-more {
+  color: #F4D03F;
+}
+
+/* ---------- CARD HOVER — border gold ---------- */
+.card:hover {
+  border-color: rgba(212, 175, 55, .6);
+  box-shadow: 0 24px 48px -16px rgba(212, 175, 55, .35);
+}
+
+/* ---------- CAT CARD HOVER — gold ---------- */
+.cat-card:hover {
+  border-color: #D4AF37;
+  box-shadow: 0 12px 28px -10px rgba(212, 175, 55, .4);
+}
+.cat-card:hover .cat-card__icon {
+  background: linear-gradient(135deg, #F4D03F, #D4AF37);
+  color: #0A1628;
+}
+
+/* ---------- PROMO BANNER — navy & gold ---------- */
+.promo-banner {
+  background: linear-gradient(120deg, #0A1628 0%, #1A2B4A 50%, #0A1628 100%);
+  position: relative;
+}
+.promo-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, .25), transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(244, 208, 63, .15), transparent 40%);
+  pointer-events: none;
+}
+.promo-banner__content { position: relative; z-index: 2; }
+.promo-banner__tag {
+  background: rgba(244, 208, 63, .2);
+  color: #F4D03F;
+  border: 1px solid rgba(244, 208, 63, .4);
+}
+.promo-banner h3 {
+  background: linear-gradient(120deg, #FFFFFF, #F4D03F);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
