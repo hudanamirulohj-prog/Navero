@@ -32,10 +32,11 @@ window.NAVERO_CONFIG = {
 /* ---------- 2. KONFIGURASI PROFIL (mudah diedit) ---------- */
 window.NAVERO_PROFILE = {
   nama: "NAVERO",
-  tagline: "Kurasi Produk Terbaik untuk Kamu",
+  tagline: "Arah Tepat Menuju Kesuksesan",
   deskripsi:
-    "NAVERO adalah katalog produk affiliate yang mengkurasi produk-produk terbaik dari Shopee. " +
-    "Kami membantu kamu menemukan produk berkualitas dengan harga terbaik, tanpa ribet.",
+    "NAVERO adalah katalog produk affiliate pilihan yang mengkurasi produk terbaik dari Shopee. " +
+    "Dengan visi \"Arah Tepat Menuju Kesuksesan\", kami membantu kamu menemukan produk berkualitas " +
+    "dengan harga terbaik untuk mendukung gaya hidup dan bisnis kamu.",
 
   sosial: {
     instagram: "https://instagram.com/navero.id",
