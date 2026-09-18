@@ -6,7 +6,7 @@
 <title>NAVERO — Katalog Produk Pilihan Terbaik</title>
 <meta name="description" content="NAVERO adalah katalog produk affiliate pilihan dari Shopee. Temukan produk terlaris, promo, dan favorit dengan harga terbaik.">
 <meta name="theme-color" content="#5B4BFF">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%235B4BFF'/><text x='50' y='70' font-size='60' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>N</text></svg>">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,10 +17,9 @@
 <!-- ============ HEADER ============ -->
 <header class="header" id="header">
   <div class="container header__inner">
-    <a href="index.html" class="logo" aria-label="NAVERO Home">
-      <span class="logo__mark">N</span>
-      <span class="logo__text">NAVERO</span>
-    </a>
+    <a href="index.html" class="logo logo--img" aria-label="NAVERO Home">
+  <img src="assets/logo.png" alt="NAVERO" class="logo__img">
+</a>
 
     <nav class="nav" id="nav">
       <a href="index.html" class="nav__link is-active">Home</a>
@@ -49,64 +48,36 @@
 
 <main>
   <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="hero__glow hero__glow--1"></div>
-    <div class="hero__glow hero__glow--2"></div>
-    <div class="container hero__inner">
-      <div class="hero__content">
-        <span class="hero__pill">
-          <span class="dot"></span> Katalog Produk Pilihan 2025
-        </span>
-        <h1 class="hero__title">
-          Temukan Produk <span class="grad">Terbaik</span><br>Hanya di NAVERO
-        </h1>
-        <p class="hero__desc">
-          Katalog produk affiliate pilihan dari Shopee. Harga jujur, kualitas terkurasi,
-          dan langsung menuju toko resmi. Belanja lebih cepat, lebih hemat.
-        </p>
-        <div class="hero__cta">
-          <a href="products.html" class="btn btn--primary btn--lg">
-            Jelajahi Katalog
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="profile.html" class="btn btn--ghost btn--lg">Tentang NAVERO</a>
-        </div>
-        <div class="hero__stats">
-          <div class="stat"><strong id="statProduk">—</strong><span>Produk</span></div>
-          <div class="stat"><strong id="statKategori">—</strong><span>Kategori</span></div>
-          <div class="stat"><strong>100%</strong><span>Gratis</span></div>
-        </div>
+ <section class="hero hero--banner">
+  <div class="hero__glow hero__glow--1"></div>
+  <div class="hero__glow hero__glow--2"></div>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <span class="hero__pill">
+        <span class="dot"></span> Katalog Produk Pilihan 2025
+      </span>
+      <h1 class="hero__title">
+        Temukan Produk <span class="grad">Terbaik</span><br>Hanya di NAVERO
+      </h1>
+      <p class="hero__desc">
+        Katalog produk affiliate pilihan dari Shopee. Harga jujur, kualitas terkurasi,
+        dan langsung menuju toko resmi. Belanja lebih cepat, lebih hemat.
+      </p>
+      <div class="hero__cta">
+        <a href="products.html" class="btn btn--primary btn--lg">
+          Jelajahi Katalog
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="profile.html" class="btn btn--ghost btn--lg">Tentang NAVERO</a>
       </div>
-
-      <div class="hero__visual">
-        <div class="hero__card hero__card--1">
-          <img src="https://picsum.photos/seed/navero1/400/400" alt="Produk pilihan" loading="lazy">
-        </div>
-        <div class="hero__card hero__card--2">
-          <img src="https://picsum.photos/seed/navero2/400/400" alt="Produk pilihan" loading="lazy">
-        </div>
-        <div class="hero__card hero__card--3">
-          <img src="https://picsum.photos/seed/navero3/400/400" alt="Produk pilihan" loading="lazy">
-        </div>
-        <div class="hero__float hero__float--a">🔥 TERLARIS</div>
-        <div class="hero__float hero__float--b">⭐ 4.9 Rating</div>
+      <div class="hero__stats">
+        <div class="stat"><strong id="statProduk">—</strong><span>Produk</span></div>
+        <div class="stat"><strong id="statKategori">—</strong><span>Kategori</span></div>
+        <div class="stat"><strong>100%</strong><span>Gratis</span></div>
       </div>
     </div>
-  </section>
-
-  <!-- ============ KATEGORI POPULER ============ -->
-  <section class="section" id="kategoriSection">
-    <div class="container">
-      <div class="section__head reveal">
-        <div>
-          <span class="section__eyebrow">Jelajahi</span>
-          <h2 class="section__title">Kategori Populer</h2>
-        </div>
-        <a href="products.html" class="link-more">Lihat semua →</a>
-      </div>
-      <div class="category-grid" id="kategoriGrid"></div>
-    </div>
-  </section>
+  </div>
+</section>
 
   <!-- ============ BANNER PROMO ============ -->
   <section class="section">
