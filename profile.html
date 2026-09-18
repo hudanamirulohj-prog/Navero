@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil — NAVERO</title>
+<meta name="description" content="Tentang NAVERO, kontak, dan sosial media resmi kami.">
+<meta name="theme-color" content="#5B4BFF">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%235B4BFF'/><text x='50' y='70' font-size='60' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>N</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="index.html" class="logo">
+      <span class="logo__mark">N</span>
+      <span class="logo__text">NAVERO</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="index.html" class="nav__link">Home</a>
+      <a href="products.html" class="nav__link">Katalog</a>
+      <a href="products.html?filter=favorit" class="nav__link">Favorit</a>
+      <a href="profile.html" class="nav__link is-active">Profil</a>
+    </nav>
+    <div class="header__actions">
+      <form class="search search--header" id="headerSearchForm" role="search">
+        <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="headerSearch" placeholder="Cari produk..." autocomplete="off" aria-label="Cari produk">
+      </form>
+      <button class="icon-btn" id="themeToggle" aria-label="Ganti tema">
+        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-hero__title">Profil NAVERO</h1>
+      <p class="page-hero__desc">Kenali kami lebih dekat dan hubungi kami kapan saja.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+
+      <div class="profile-card reveal">
+        <div class="profile-card__avatar">
+          <img src="assets/logo.png" alt="Logo NAVERO" onerror="this.style.display='none';this.parentElement.classList.add('is-fallback')">
+          <span class="profile-card__initial">N</span>
+        </div>
+        <div class="profile-card__body">
+          <h2 id="profNama">NAVERO</h2>
+          <p class="profile-card__tagline" id="profTagline">Kurasi Produk Terbaik untuk Kamu</p>
+          <p class="profile-card__desc" id="profDeskripsi">
+            NAVERO adalah katalog produk affiliate yang mengkurasi produk-produk terbaik dari Shopee.
+            Kami membantu kamu menemukan produk berkualitas dengan harga terbaik, tanpa ribet.
+          </p>
+          <div class="profile-card__actions">
+            <a href="products.html" class="btn btn--primary">Lihat Katalog</a>
+            <a href="#" class="btn btn--outline" id="profWhatsapp" target="_blank" rel="noopener">Hubungi Kami</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-grid">
+        <div class="info-card reveal">
+          <div class="info-card__icon">🎯</div>
+          <h3>Misi Kami</h3>
+          <p>Menjadi jembatan antara kamu dan produk terbaik — cepat, jujur, dan tanpa drama.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card__icon">✅</div>
+          <h3>Kurasi Ketat</h3>
+          <p>Setiap produk dipilih berdasarkan rating, ulasan, dan nilai terbaik untuk uangmu.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card__icon">💸</div>
+          <h3>100% Gratis</h3>
+          <p>Menggunakan NAVERO sepenuhnya gratis. Kami hanya mendapat komisi dari penjual.</p>
+        </div>
+      </div>
+
+      <div class="about-block reveal" id="profTentang">
+        <h2>Tentang NAVERO</h2>
+        <p>
+          NAVERO lahir dari kebutuhan sederhana: mencari produk bagus di marketplace itu melelahkan.
+          Terlalu banyak pilihan, terlalu banyak ulasan palsu, dan terlalu banyak waktu terbuang.
+        </p>
+        <p>
+          Kami merangkum semuanya. Setiap produk di NAVERO sudah melalui proses kurasi —
+          mulai dari pengecekan rating, ulasan pembeli nyata, hingga perbandingan harga.
+          Hasilnya: katalog ringkas yang bisa kamu jelajahi dalam hitungan menit.
+        </p>
+        <p>
+          Semua tombol produk di NAVERO mengarah langsung ke halaman resmi Shopee.
+          Kami tidak menyimpan stok, tidak memproses pembayaran, dan tidak menambah biaya apapun.
+          Kamu membeli dengan harga yang sama seperti di Shopee — kami hanya membantu kamu menemukannya.
+        </p>
+      </div>
+
+      <div class="contact-block reveal">
+        <h2>Hubungi Kami</h2>
+        <p class="contact-block__sub">Ada pertanyaan, kerja sama, atau ingin produkmu dikurasi? Kirim pesan ke kami.</p>
+        <div class="contact-grid" id="contactGrid"></div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a href="index.html" class="logo">
+        <span class="logo__mark">N</span>
+        <span class="logo__text">NAVERO</span>
+      </a>
+      <p>Katalog produk affiliate pilihan. Kami membantu kamu menemukan produk terbaik dengan harga terbaik.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Navigasi</h4>
+      <a href="index.html">Home</a>
+      <a href="products.html">Katalog</a>
+      <a href="products.html?filter=favorit">Favorit</a>
+      <a href="profile.html">Profil</a>
+    </div>
+    <div class="footer__col">
+      <h4>Kategori</h4>
+      <a href="products.html?cat=Elektronik">Elektronik</a>
+      <a href="products.html?cat=Fashion">Fashion</a>
+      <a href="products.html?cat=Kecantikan">Kecantikan</a>
+      <a href="products.html?cat=Gaming">Gaming</a>
+    </div>
+    <div class="footer__col">
+      <h4>Terhubung</h4>
+      <a href="#" id="footInstagram" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" id="footTiktok" target="_blank" rel="noopener">TikTok</a>
+      <a href="#" id="footWhatsapp" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#" id="footEmail">Email</a>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© <span id="year"></span> NAVERO. All rights reserved.</p>
+    <p class="footer__note">Halaman ini mengandung link affiliate. Kami dapat memperoleh komisi tanpa biaya tambahan untukmu.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Kembali ke atas">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script src="api.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
