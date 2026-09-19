@@ -39,17 +39,17 @@ window.NAVERO_PROFILE = {
     "dengan harga terbaik untuk mendukung gaya hidup dan bisnis kamu.",
 
   sosial: {
-    instagram: "https://instagram.com/navero.id",
-    tiktok: "https://tiktok.com/@navero.id",
-    whatsapp: "https://wa.me/6281234567890",
-    email: "hello@navero.id",
+    instagram: "https://instagram.com/navero_official_01",
+    tiktok: "https://tiktok.com/@navero68",
+    whatsapp: "https://wa.me/083829944887",
+    email: "navero@gmail.com",
   },
 
   kontak: [
-    { label: "Instagram", value: "@navero.id", icon: "📸", url: "https://instagram.com/navero.id" },
-    { label: "TikTok",    value: "@navero.id", icon: "🎵", url: "https://tiktok.com/@navero.id" },
-    { label: "WhatsApp",  value: "+62 812-3456-7890", icon: "💬", url: "https://wa.me/6281234567890" },
-    { label: "Email",     value: "hello@navero.id", icon: "✉️", url: "mailto:hello@navero.id" },
+    { label: "Instagram", value: "navero_official_01", icon: "📸", url: "https://instagram.com/navero_official_01" },
+    { label: "TikTok",    value: "@navero68", icon: "🎵", url: "https://tiktok.com/@navero68" },
+    { label: "WhatsApp",  value: "+62 838-2994-4887", icon: "💬", url: "https://wa.me/083829944887" },
+    { label: "Email",     value: "navero@gmail.com", icon: "✉️", url: "mailto: navero@gmail.com" },
   ],
 };
 
