@@ -222,16 +222,16 @@ function csvToObjects(rows) {
     if (!name) continue; // lewati baris kosong
 
     out.push({
-      id:          get(row, 'ID') || String(r).padStart(3, "0"),
-      name:        name,
-      category:    get(row, 'Kategori') || 'Lainnya',
-      price:       _cleanPrice(get(row, 'Harga')),
-      image:       get(row, 'Gambar'),
-      link:        get(row, 'Link Affiliate'),
-      description: get(row, 'Deskripsi'),
-      badge:       get(row, 'Badge').toUpperCase(),
-    });
-  }
+  id:          get(row, 'ID') || String(r).padStart(3, "0"),
+  name:        name,
+  category:    get(row, 'Kategori') || 'Lainnya',
+  price:       _cleanPrice(get(row, 'Harga')),
+  image:       get(row, 'Gambar'),
+  video:       get(row, 'Video'),          // ⬅️ BARIS BARU
+  link:        get(row, 'Link Affiliate'),
+  description: get(row, 'Deskripsi'),
+  badge:       get(row, 'Badge').toUpperCase(),
+});
 
   return out;
 }
