@@ -10,8 +10,9 @@
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
   const {
-    getProducts, formatRupiah, getFavorites, isFavorite, toggleFavorite,
-  } = window.NAVERO;
+  getProducts, formatRupiah, getFavorites, isFavorite, toggleFavorite,
+  detectVideoType, youtubeThumb,   // ⬅️ BARIS BARU
+} = window.NAVERO;
 
   const CATEGORIES = window.NAVERO_CATEGORIES;
   const CONFIG = window.NAVERO_CONFIG;
@@ -164,38 +165,48 @@
   }
 
   function cardHTML(p) {
-    const fav = isFavorite(p.id);
-    const img = p.image || `https://picsum.photos/seed/${encodeURIComponent(p.id)}/600/600`;
-    const badge = p.badge
-      ? `<span class="badge ${badgeClass(p.badge)}">${escapeHtml(p.badge)}</span>`
-      : "";
+  const fav = isFavorite(p.id);
+  const img = p.image || `https://picsum.photos/seed/${encodeURIComponent(p.id)}/600/600`;
+  const vid = detectVideoType(p.video);
+  const hasVideo = vid.type !== "none";
+  const badge = p.badge
+    ? `<span class="badge ${badgeClass(p.badge)}">${escapeHtml(p.badge)}</span>`
+    : "";
 
-    return `
-      <article class="card" data-id="${escapeHtml(p.id)}">
-        <div class="card__media">
-          <a class="card__media-link" href="${escapeHtml(p.link)}" target="_blank" rel="nofollow sponsored noopener" aria-label="${escapeHtml(p.name)}">
-            <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name)}" loading="lazy"
-                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/${encodeURIComponent(p.id)}/600/600'">
-          </a>
-          ${badge}
-          <button class="fav-btn ${fav ? "is-active" : ""}" data-fav="${escapeHtml(p.id)}" aria-label="Simpan ke favorit">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
-            </svg>
-          </button>
-        </div>
-        <div class="card__body">
-          <span class="card__cat">${escapeHtml(p.category)}</span>
-          <h3 class="card__title">${escapeHtml(p.name)}</h3>
-          <div class="card__price">${formatRupiah(p.price)}</div>
-          <p class="card__desc">${escapeHtml(p.description)}</p>
-          <a class="btn btn--primary card__cta" href="${escapeHtml(p.link)}" target="_blank" rel="nofollow sponsored noopener">
-            Lihat Produk
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </article>`;
-  }
+  const videoBadge = hasVideo
+    ? `<button class="video-play" data-video-id="${escapeHtml(p.id)}" aria-label="Putar video produk">
+         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+         <span class="video-play__label">Video</span>
+       </button>`
+    : "";
+
+  return `
+    <article class="card" data-id="${escapeHtml(p.id)}">
+      <div class="card__media">
+        <a class="card__media-link" href="${escapeHtml(p.link)}" target="_blank" rel="nofollow sponsored noopener" aria-label="${escapeHtml(p.name)}">
+          <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name)}" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/${encodeURIComponent(p.id)}/600/600'">
+        </a>
+        ${badge}
+        ${videoBadge}
+        <button class="fav-btn ${fav ? "is-active" : ""}" data-fav="${escapeHtml(p.id)}" aria-label="Simpan ke favorit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="card__body">
+        <span class="card__cat">${escapeHtml(p.category)}</span>
+        <h3 class="card__title">${escapeHtml(p.name)}</h3>
+        <div class="card__price">${formatRupiah(p.price)}</div>
+        <p class="card__desc">${escapeHtml(p.description)}</p>
+        <a class="btn btn--primary card__cta" href="${escapeHtml(p.link)}" target="_blank" rel="nofollow sponsored noopener">
+          Lihat Produk
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </article>`;
+}
 
   function skeletonHTML(count = 8) {
     return Array.from({ length: count }).map(() => `
@@ -227,31 +238,39 @@
      5. FAVORIT (EVENT DELEGATION)
      ========================================================= */
   function initFavorites() {
-    document.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-fav]");
-      if (!btn) return;
+  document.addEventListener("click", (e) => {
+    // Tombol play video
+    const videoBtn = e.target.closest("[data-video-id]");
+    if (videoBtn) {
       e.preventDefault();
-      const id = btn.getAttribute("data-fav");
-      const added = toggleFavorite(id);
+      openVideoModal(videoBtn.getAttribute("data-video-id"));
+      return;
+    }
 
-      btn.classList.toggle("is-active", added);
-      btn.classList.remove("is-bump");
-      void btn.offsetWidth;
-      btn.classList.add("is-bump");
+    // Tombol favorit
+    const btn = e.target.closest("[data-fav]");
+    if (!btn) return;
+    e.preventDefault();
+    const id = btn.getAttribute("data-fav");
+    const added = toggleFavorite(id);
 
-      toast(added ? "❤️ Ditambahkan ke favorit" : "💔 Dihapus dari favorit");
+    btn.classList.toggle("is-active", added);
+    btn.classList.remove("is-bump");
+    void btn.offsetWidth;
+    btn.classList.add("is-bump");
 
-      if (state.favOnly) {
-        applyFilters();
-      } else {
-        // Sinkronkan semua tombol dengan id yang sama
-        $$(`[data-fav="${CSS.escape(id)}"]`).forEach(b =>
-          b.classList.toggle("is-active", added)
-        );
-      }
-    });
-  }
+    toast(added ? "❤️ Ditambahkan ke favorit" : "💔 Dihapus dari favorit");
 
+    if (state.favOnly) {
+      applyFilters();
+    } else {
+      $$(`[data-fav="${CSS.escape(id)}"]`).forEach(b =>
+        b.classList.toggle("is-active", added)
+      );
+    }
+  });
+}
+   
   /* =========================================================
      6. TOAST
      ========================================================= */
@@ -270,6 +289,80 @@
     }, 2200);
   }
 
+   /* ---------- MODAL VIDEO ---------- */
+function openVideoModal(productId) {
+  const product = state.products.find(p => String(p.id) === String(productId));
+  if (!product) return;
+
+  const vid = detectVideoType(product.video);
+  if (vid.type === "none") return;
+
+  let mediaHTML = "";
+  if (vid.type === "youtube") {
+    mediaHTML = `
+      <iframe
+        src="${vid.embed}&autoplay=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        frameborder="0"
+        title="${escapeHtml(product.name)}">
+      </iframe>`;
+  } else if (vid.type === "mp4") {
+    mediaHTML = `
+      <video controls autoplay playsinline poster="${escapeHtml(product.image || "")}">
+        <source src="${escapeHtml(vid.src)}" type="video/mp4">
+        Browser kamu tidak mendukung video.
+      </video>`;
+  }
+
+  const modalHTML = `
+    <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video produk">
+      <div class="video-modal__backdrop" data-close-modal></div>
+      <div class="video-modal__panel">
+        <button class="video-modal__close" data-close-modal aria-label="Tutup">×</button>
+        <div class="video-modal__media">${mediaHTML}</div>
+        <div class="video-modal__info">
+          <span class="card__cat">${escapeHtml(product.category)}</span>
+          <h3>${escapeHtml(product.name)}</h3>
+          <p class="video-modal__price">${formatRupiah(product.price)}</p>
+          <p class="video-modal__desc">${escapeHtml(product.description)}</p>
+          <a class="btn btn--primary btn--lg" href="${escapeHtml(product.link)}" target="_blank" rel="nofollow sponsored noopener">
+            Beli Sekarang
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>`;
+
+  document.body.insertAdjacentHTML("beforeend", modalHTML);
+  document.body.style.overflow = "hidden";
+
+  const modal = $("#videoModal");
+  requestAnimationFrame(() => modal.classList.add("is-open"));
+
+  modal.addEventListener("click", (e) => {
+    if (e.target.closest("[data-close-modal]") || e.target === modal) {
+      closeVideoModal();
+    }
+  });
+  document.addEventListener("keydown", escCloseModal);
+}
+
+function closeVideoModal() {
+  const modal = $("#videoModal");
+  if (!modal) return;
+  modal.classList.remove("is-open");
+  setTimeout(() => {
+    modal.remove();
+    document.body.style.overflow = "";
+  }, 220);
+  document.removeEventListener("keydown", escCloseModal);
+}
+
+function escCloseModal(e) {
+  if (e.key === "Escape") closeVideoModal();
+}
+   
   /* =========================================================
      7. SCROLL REVEAL
      ========================================================= */
