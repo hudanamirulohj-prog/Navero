@@ -11,13 +11,13 @@ window.NAVERO_CONFIG = {
    *
    * Biarkan kosong ("") untuk memakai data DEMO.
    */
-  CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTvGRVnf-9ysm4oyOpQryj3JCHl2BqySe9G_VHoMoe7r3gKS5XwAHZA0ZclzsvZuVtZaJWV19RowuF_/pub?gid=0&single=true&output=csv",
+  CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTvGRVnf-9ysm4oyOpQryj3JCHl2BqySe9G_VHoMoe7r3gKS5XwAHZA0ZclzsvZuVtZaJWV19RowuF_/pub?output=csv",
 
   /** Lama cache data produk di browser (ms). Default 5 menit. */
   CACHE_TTL: 5 * 60 * 1000,
 
   /** Kunci penyimpanan cache. */
-  CACHE_KEY: "navero_products_v1",
+ CACHE_KEY: "navero_products_v2",   // ⬅️ harus v2 (bukan v1)
 
   /** Kunci penyimpanan favorit. */
   FAV_KEY: "navero_favorites_v1",
@@ -266,11 +266,7 @@ async function getProducts({ force = false } = {}) {
     // Tambahkan cache-buster agar browser tidak pakai versi lama
     const url = CSV_URL + (CSV_URL.includes("?") ? "&" : "?") + "_=" + Date.now();
 
-    const res = await fetch(url, {
-      method: "GET",
-      redirect: "follow",
-      cache: "no-store",
-    });
+    const res = await fetch(url, { method: "GET", redirect: "follow", cache: "no-store" });
 
     if (!res.ok) throw new Error("HTTP " + res.status);
 
