@@ -3,6 +3,63 @@
    Konfigurasi + lapisan data (Google Sheets CSV Published)
    ========================================================= */
 
+/* ---------- VIDEO HELPERS ---------- */
+/**
+ * Deteksi jenis video dari URL
+ * @returns {{ type: 'youtube'|'mp4'|'none', id?: string, embed?: string, src?: string }}
+ */
+function detectVideoType(url) {
+  if (!url || typeof url !== "string") return { type: "none" };
+  const u = url.trim();
+  if (!u) return { type: "none" };
+
+  // YouTube: watch?v=ID
+  let m = u.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+  if (m) return {
+    type: "youtube",
+    id: m[1],
+    embed: `https://www.youtube.com/embed/${m[1]}?rel=0&modestbranding=1&playsinline=1`,
+  };
+
+  // YouTube Shorts
+  m = u.match(/youtube\.com\/shorts\/([A-Za-z0-9_-]{6,})/);
+  if (m) return {
+    type: "youtube",
+    id: m[1],
+    embed: `https://www.youtube.com/embed/${m[1]}?rel=0&modestbranding=1&playsinline=1`,
+  };
+
+  // YouTube embed langsung
+  m = u.match(/youtube\.com\/embed\/([A-Za-z0-9_-]{6,})/);
+  if (m) return {
+    type: "youtube",
+    id: m[1],
+    embed: `https://www.youtube.com/embed/${m[1]}?rel=0&modestbranding=1&playsinline=1`,
+  };
+
+  // Google Drive
+  m = u.match(/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)/);
+  if (m) return {
+    type: "youtube",
+    id: m[1],
+    embed: `https://drive.google.com/file/d/${m[1]}/preview`,
+  };
+
+  // Video file (.mp4, .webm, .ogg, .mov)
+  if (/\.(mp4|webm|ogg|mov|m4v)(\?.*)?$/i.test(u)) {
+    return { type: "mp4", src: u };
+  }
+
+  // Fallback
+  return { type: "mp4", src: u };
+}
+
+/** Ambil thumbnail YouTube dari video ID */
+function youtubeThumb(id) {
+  if (!id) return "";
+  return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+}
+
 /* ---------- 1. KONFIGURASI UTAMA ---------- */
 window.NAVERO_CONFIG = {
   /**
