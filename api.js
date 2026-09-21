@@ -190,26 +190,16 @@ function csvToObjects(rows) {
 
   // Peta alias header (fleksibel, case-insensitive)
   const aliases = {
-    'id': 'ID',
-    'nama produk': 'Nama Produk',
-    'nama': 'Nama Produk',
-    'produk': 'Nama Produk',
-    'name': 'Nama Produk',
-    'kategori': 'Kategori',
-    'category': 'Kategori',
-    'harga': 'Harga',
-    'price': 'Harga',
-    'gambar': 'Gambar',
-    'image': 'Gambar',
-    'foto': 'Gambar',
-    'link affiliate': 'Link Affiliate',
-    'link': 'Link Affiliate',
-    'linkaffiliate': 'Link Affiliate',
-    'deskripsi': 'Deskripsi',
-    'description': 'Deskripsi',
-    'badge': 'Badge',
-    'label': 'Badge',
-  };
+  'id': 'ID',
+  'nama produk': 'Nama Produk', 'nama': 'Nama Produk', 'produk': 'Nama Produk', 'name': 'Nama Produk',
+  'kategori': 'Kategori', 'category': 'Kategori',
+  'harga': 'Harga', 'price': 'Harga',
+  'gambar': 'Gambar', 'image': 'Gambar', 'foto': 'Gambar',
+  'video': 'Video', 'video url': 'Video', 'videourl': 'Video', 'youtube': 'Video',
+  'link affiliate': 'Link Affiliate', 'link': 'Link Affiliate', 'linkaffiliate': 'Link Affiliate',
+  'deskripsi': 'Deskripsi', 'description': 'Deskripsi',
+  'badge': 'Badge', 'label': 'Badge',
+};
 
   const idx = {};
   headers.forEach((h, i) => {
