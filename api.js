@@ -11,7 +11,7 @@ window.NAVERO_CONFIG = {
    *
    * Biarkan kosong ("") untuk memakai data DEMO.
    */
-  CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTvGRVnf-9ysm4oyOpQryj3JCHl2BqySe9G_VHoMoe7r3gKS5XwAHZA0ZclzsvZuVtZaJWV19RowuF_/pub?output=csv",
+  CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTvGRVnf-9ysm4oyOpQryj3JCHl2BqySe9G_VHoMoe7r3gKS5XwAHZA0ZclzsvZuVtZaJWV19RowuF_/pub?gid=0&single=true&output=csv",
 
   /** Lama cache data produk di browser (ms). Default 5 menit. */
   CACHE_TTL: 5 * 60 * 1000,
