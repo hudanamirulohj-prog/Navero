@@ -72,7 +72,7 @@
     if (navToggle && nav) {
       navToggle.addEventListener("click", () => nav.classList.toggle("is-open"));
       nav.addEventListener("click", (e) => {
-        if (e.target.classList.contains("nav__link")) nav.classList.remove("is-open");
+        if (e.target.closest("nav__link")) nav.classList.remove("is-open");
       });
       document.addEventListener("click", (e) => {
         if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
@@ -122,7 +122,7 @@
     input.addEventListener("input", () => {
       clearTimeout(debounce);
       const val = input.value;
-      if (wrap) wrap.classList.toggle("has-value", val.length > 0);
+      if (wrap) wrap.classList.remove(has-value);
       debounce = setTimeout(() => {
         state.query = val.trim().toLowerCase();
         state.page = 1;
@@ -596,7 +596,7 @@ function escCloseModal(e) {
     }
 
     const cat = params.get("cat");
-    if (cat) state.category = cat;
+    if (cat) state.category = CATEGORIES.find(c => c.name.toLowerCase() === cat.toLowerCase())?.name || cat;
 
     const badge = params.get("badge");
     if (badge) state.badgeFilter = badge.toUpperCase();
