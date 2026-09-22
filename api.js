@@ -11,7 +11,7 @@ window.NAVERO_CONFIG = {
    *
    * Biarkan kosong ("") untuk memakai data DEMO.
    */
-  CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTvGRVnf-9ysm4oyOpQryj3JCHl2BqySe9G_VHoMoe7r3gKS5XwAHZA0ZclzsvZuVtZaJWV19RowuF_/pub?output=csv",
+  CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTvGRVnf-9ysm4oyOpQryj3JCHl2BqySe9G_VHoMoe7r3gKS5XwAHZA0ZclzsvZuVtZaJWV19RowuF_/pub?gid=0&single=true&output=csv",
 
   /** Lama cache data produk di browser (ms). Default 5 menit. */
   CACHE_TTL: 5 * 60 * 1000,
@@ -41,15 +41,15 @@ window.NAVERO_PROFILE = {
   sosial: {
     instagram: "https://instagram.com/navero_official_01",
     tiktok: "https://tiktok.com/@navero68",
-    whatsapp: "https://wa.me/083829944887",
+    whatsapp: "https://wa.me/6283829944887",
     email: "navero@gmail.com",
   },
 
   kontak: [
     { label: "Instagram", value: "navero_official_01", icon: "📸", url: "https://instagram.com/navero_official_01" },
     { label: "TikTok",    value: "@navero68", icon: "🎵", url: "https://tiktok.com/@navero68" },
-    { label: "WhatsApp",  value: "+62 838-2994-4887", icon: "💬", url: "https://wa.me/083829944887" },
-    { label: "Email",     value: "navero@gmail.com", icon: "✉️", url: "mailto: navero@gmail.com" },
+    { label: "WhatsApp",  value: "+62 838-2994-4887", icon: "💬", url: "https://wa.me/6283829944887" },
+    { label: "Email",     value: "navero@gmail.com", icon: "✉️", url: "mailto:navero@gmail.com" },
   ],
 };
 
@@ -376,7 +376,7 @@ function detectVideoType(url) {
   // Google Drive
   m = u.match(/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)/);
   if (m) return {
-    type: "youtube",
+    type: "drive",
     id: m[1],
     embed: `https://drive.google.com/file/d/${m[1]}/preview`,
   };
@@ -387,7 +387,7 @@ function detectVideoType(url) {
   }
 
   // Fallback
-  return { type: "mp4", src: u };
+  return { type: "none", src: u };
 }
 
 /** Ambil thumbnail YouTube dari video ID */
@@ -397,17 +397,6 @@ function youtubeThumb(id) {
 }
 
 /* ---------- Expose ke global ---------- */
-window.NAVERO = {
-  getProducts,
-  clearProductCache,
-  formatRupiah,
-  getFavorites,
-  isFavorite,
-  toggleFavorite,
-  parseCSV,       // untuk debugging
-  csvToObjects,   // untuk debugging
-};
-
 window.NAVERO = {
   getProducts,
   clearProductCache,
